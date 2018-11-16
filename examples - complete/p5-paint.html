@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h1>With P5</h1>
+
+    <!-- P5 Libraries https://p5js.org/ -->
+    <script src="../js/p5.js"></script>
+    <script src="../js/p5.dom.min.js"></script>
+    <script src="../js/p5.sound.min.js"></script>
+
+</body>
+
+
+<script>
+
+   // MS Paint-style drawing tool in three lines
+
+    setup = () => {
+        createCanvas(window.innerWidth,window.innerHeight);
+    }
+
+    draw = () => {
+        fill(255, 0, 255);
+        noStroke();
+        ellipse(mouseX,mouseY,100,100);
+    }
+
+</script>
+</html>

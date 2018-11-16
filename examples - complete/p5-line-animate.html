@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h1>With P5</h1>
+
+    <!-- P5 Libraries https://p5js.org/ -->
+    <script src="../js/p5.js"></script>
+    <script src="../js/p5.dom.min.js"></script>
+    <script src="../js/p5.sound.min.js"></script>
+
+</body>
+
+
+<script>
+
+    // Draws a line that moves to the right 30px every frame refresh
+
+    let x = 0;
+
+    setup = () => {
+        createCanvas(500,500);
+        background(255, 0, 133);
+    }
+
+    draw = () => {
+        line(50+x,50,100+x,100);
+        x+=30;
+    }
+
+</script>
+</html>
