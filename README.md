@@ -1,4 +1,4 @@
-#Creative Coding in the Browser & Opening Up Open Source
+# Creative Coding in the Browser & Opening Up Open Source
 
 Assets used in Elgin-Skye McLaren's talk *Creative Coding & Opening Up Open Source* presented at CascadiaJS, 2018 @ Amazon Seattle.
 
