@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <style>
+        body{
+            margin:0;
+        }
+        .heading{
+            position:absolute;
+            color:white;
+            text-align:center;
+            width:100%;
+            font-style: italic
+        }
+    </style>
+
+    <div id="container"></div>
+
+    <!-- P5 Libraries https://p5js.org/ -->
+    <script src="../js/p5.js"></script>
+    <script src="../js/p5.dom.min.js"></script>
+    <script src="../js/p5.sound.min.js"></script>
+</body>
+
+
+<script>
+
+    // MS Paint-style drawing tool in three lines
+    var xcoord;
+    var ycoord;
+    var pxcoord;
+    var pycoord;
+    var speed=1;
+    var margin;
+    var radius;
+
+    setup = () => {
+        createCanvas(window.innerWidth,window.innerHeight);
+        background(240,20, 20);
+        margin= width/11
+
+        // Create title
+        webeditorLinkDiv = createDiv('<h1>Etch-a-Sketchy</h1>');
+		webeditorLinkDiv.parent('container');
+		webeditorLinkDiv.addClass("heading")
+        fill(200);
+        rect(margin,margin, width-(margin*2), height-(margin*2))
+        xcoord = width/2;
+        ycoord = height/2;
+        radius=margin/1.3;
+        ellipse(10 + margin/2, height-(margin/2), radius, radius)
+        ellipse((width-10) - (margin/2), height-(margin/2), radius, radius)
+
+        line(10 + margin/2,  height-(margin/2)+20, 10 + margin/2,  height-(margin/2)-20 )
+        line(10 + margin/2,  height-(margin/2), 10 + margin/2,  height-(margin/2)-20 )
+        // line(10 + margin/2,  height-(margin/2)+20, 10 + margin/2,  height-(margin/2)  )
+    }
+
+    draw = () => {
+        stroke(30);
+        fill(30);
+        stroke(0);
+        pxcoord=xcoord;
+        pycoord=ycoord;
+        fill(230);
+
+
+        if(keyIsDown(UP_ARROW) && ycoord>margin ){
+            ycoord-=1;
+        }
+        if(keyIsDown(DOWN_ARROW) && ycoord<height-margin){
+            ycoord+=1;
+        }
+
+        if(keyIsDown(RIGHT_ARROW) && xcoord< width-margin ){
+            xcoord+=1;
+        }
+
+        if(keyIsDown(LEFT_ARROW) && ycoord >margin){
+            xcoord-=1;
+        }
+
+        line(xcoord, ycoord, pxcoord, pycoord);
+}
+
+</script>
+</html>
