@@ -61,8 +61,6 @@
 
 
 <script>
-
-    // MS Paint-style drawing tool in three lines
     let xcoord;
     let ycoord;
     let pxcoord;
@@ -70,6 +68,13 @@
     let speed = 1;
     let margin;
     let radius;
+
+    window.addEventListener("keydown", function(e) {
+         // space and arrow keys
+        if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+            e.preventDefault();
+        }
+    }, false);
 
     setup = () => {
         createCanvas(window.innerWidth,window.innerHeight);
