@@ -52,81 +52,78 @@
     </style>
 </head>
 <body>
-
     <div id="container"></div>
 
     <script src="../js/p5.js"></script>
     <script src="../js/p5.dom.min.js"></script>
-</body>
+    <script>
+        let xcoord;
+        let ycoord;
+        let pxcoord;
+        let pycoord;
+        let speed = 1;
+        let margin;
+        let radius;
+
+        window.addEventListener("keydown", function(e) {
+            // space and arrow keys
+            if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+                e.preventDefault();
+            }
+        }, false);
+
+        setup = () => {
+            createCanvas(window.innerWidth,window.innerHeight);
+            background(240, 20, 20);
+            margin = width/11
+            titleDiv = createDiv('<h2 class="subheading">Magic</h2> <h1 class="heading">Etch A Sketchy</h2><h2 class="subheading">Screen</h2>');
+                titleDiv.parent('container');
+                titleDiv.addClass("heading-container")
+
+                instructionsDiv = createDiv('<img class="arrows" src="../assets/arrows.png"> <p class="instructions">Use arrow keys to draw</p>');
+                instructionsDiv.parent('container');
+                instructionsDiv.addClass("instructions-container")
 
 
-<script>
-    let xcoord;
-    let ycoord;
-    let pxcoord;
-    let pycoord;
-    let speed = 1;
-    let margin;
-    let radius;
+                fill(200);
+                noStroke();
+                rect(margin,margin, width-(margin*2), height-(margin*2), 20)
+                xcoord = width/2;
+                ycoord = height/2;
+                radius = margin/1.3;
+                fill(255, 255, 255);
+                ellipse(10 + margin/2, height-(margin/2), radius, radius);
+                ellipse((width-10) - (margin/2), height-(margin/2), radius, radius);
+            }
 
-    window.addEventListener("keydown", function(e) {
-         // space and arrow keys
-        if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
-            e.preventDefault();
-        }
-    }, false);
+            draw = () => {
+                stroke(30);
+                fill(30);
+                stroke(0);
+                pxcoord = xcoord;
+                pycoord = ycoord;
+                fill(230);
 
-    setup = () => {
-        createCanvas(window.innerWidth,window.innerHeight);
-        background(240, 20, 20);
-        margin = width/11
-        titleDiv = createDiv('<h2 class="subheading">Magic</h2> <h1 class="heading">Etch A Sketchy</h2><h2 class="subheading">Screen</h2>');
-        titleDiv.parent('container');
-        titleDiv.addClass("heading-container")
+                if(keyIsDown(UP_ARROW) && ycoord>margin ){
+                    ycoord-=1;
+                }
+                if(keyIsDown(DOWN_ARROW) && ycoord<height-margin-1){
+                    ycoord+=1;
+                }
 
-        instructionsDiv = createDiv('<img class="arrows" src="../assets/arrows.png"> <p class="instructions">Use arrow keys to draw</p>');
-        instructionsDiv.parent('container');
-        instructionsDiv.addClass("instructions-container")
+                if(keyIsDown(RIGHT_ARROW) && xcoord< width-margin-1 ){
+                    xcoord+=1;
+                }
 
+                if(keyIsDown(LEFT_ARROW) && xcoord >= margin+1){
+                    xcoord-=1;
+                }
+                line(xcoord, ycoord, pxcoord, pycoord);
+            }
 
-        fill(200);
-        noStroke();
-        rect(margin,margin, width-(margin*2), height-(margin*2), 20)
-        xcoord = width/2;
-        ycoord = height/2;
-        radius = margin/1.3;
-        fill(255, 255, 255);
-        ellipse(10 + margin/2, height-(margin/2), radius, radius);
-        ellipse((width-10) - (margin/2), height-(margin/2), radius, radius);
-    }
-
-    draw = () => {
-        stroke(30);
-        fill(30);
-        stroke(0);
-        pxcoord = xcoord;
-        pycoord = ycoord;
-        fill(230);
-
-        if(keyIsDown(UP_ARROW) && ycoord>margin ){
-            ycoord-=1;
-        }
-        if(keyIsDown(DOWN_ARROW) && ycoord<height-margin-1){
-            ycoord+=1;
-        }
-
-        if(keyIsDown(RIGHT_ARROW) && xcoord< width-margin-1 ){
-            xcoord+=1;
-        }
-
-        if(keyIsDown(LEFT_ARROW) && xcoord >= margin+1){
-            xcoord-=1;
-        }
-        line(xcoord, ycoord, pxcoord, pycoord);
-    }
-
-    keyPressed = () => {
-        instructionsDiv.remove();
-    }
+            keyPressed = () => {
+                instructionsDiv.remove();
+            }
     </script>
-    </html>
+</body>
+</html>
