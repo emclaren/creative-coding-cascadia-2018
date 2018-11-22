@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h1>With P5</h1>
+
+    <!-- P5 Libraries https://p5js.org/ -->
+    <script src="../js/p5.js"></script>
+    <script src="../js/p5.dom.min.js"></script>
+    <script src="../js/p5.sound.min.js"></script>
+
+</body>
+
+
+<script>
+
+   // MS Paint-style drawing tool in three lines
+var x=0;
+var speed=1;
+
+
+    setup = () => {
+        createCanvas(window.innerWidth,window.innerHeight);
+    }
+
+    draw = () => {
+
+        fill(255-x, 0, 255);
+        noStroke();
+        rect(random(255)+x,mouseY,100,100);
+        x+=speed;
+        if(x<0){
+            speed*=-1;
+        }
+
+    }
+
+</script>
+</html>

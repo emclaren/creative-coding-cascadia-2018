@@ -14,10 +14,7 @@
   <script src="../js/p5.dom.min.js"></script>
   <script src="../js/p5.sound.min.js"></script>
 
-</body>
-
 <script>
-
   // IMPORTANT: You will need to have a server running for the sketch to load (due to audio track), see readme
   let video;
   let poseNet;
@@ -132,7 +129,6 @@
         let leftAnkle = poses[i].pose.keypoints[15];
         let rightAnkle = poses[i].pose.keypoints[16];
 
-
         // Average point between the ears
         let earAvgX = (leftEar.position.x+rightEar.position.x)/2;
         let earAvgY = (leftEar.position.y+rightEar.position.y)/2;
@@ -177,7 +173,6 @@
       }
     }
   }
-
 
   // Slow down the music if no one is in the frame
   slowDown = () => {
